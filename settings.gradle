@@ -1,3 +1,4 @@
 include 'skalka-core'
 include 'aws-test'
 include 'hello-world-test'
+include 'jline-test'

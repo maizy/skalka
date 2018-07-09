@@ -13,6 +13,7 @@ _Work in progress_
 | ---- | ------ | ----------- |
 | hello-world-test | ✅ | testing scala |
 | aws-test | ❌ (tsl support required) | testing aws sdk support |
+| jline-test | ✅ | testing jline support (rich terminal with autocomplete) |
 
 ## Build
 
@@ -29,7 +30,7 @@ All tools:
 ./gradlew buildNative
 ```
 
-one tool only:
+Only one tool:
 
 ```
 ./gradlew :tool-name:buildNative
