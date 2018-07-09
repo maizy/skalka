@@ -2,6 +2,8 @@
 
 Collection of cli tools writen specially for GraalVM AOT Compiler.
 
+[![Build Status](https://travis-ci.org/maizy/skalka.svg?branch=master)](https://travis-ci.org/maizy/skalka)
+
 _Work in progress_
 
 ## Tools
