@@ -23,10 +23,12 @@ object AwsTestApp extends CliApplication {
   }
 
   /**
-    * currenty fails in runtime because of missing support for SSL/TLS in native-image
-    * • graalVM issues - https://github.com/oracle/graal/issues/390, https://github.com/oracle/graal/issues/392
-    * • exeption throws here - https://github.com/aws/aws-sdk-java/blob/4734de6fb0f80fe5768a6587aad3b9d0eaec388f/aws-java-sdk-core/src/main/java/com/amazonaws/internal/SdkSSLContext.java#L32
-    */
+   * currenty fails in runtime because of missing support for SSL/TLS in native-image
+   * • graalVM issues - https://github.com/oracle/graal/issues/390, https://github.com/oracle/graal/issues/392
+   * • exeption throws here -
+   *    https://github.com/aws/aws-sdk-java/blob/4734de6fb0f80fe5768a6587aad3b9d0eaec388f/
+   *      aws-java-sdk-core/src/main/java/com/amazonaws/internal/SdkSSLContext.java#L32
+   */
   def testS3Listing(path: String): Unit = {
     val client = AmazonS3ClientBuilder.defaultClient()
     require(path.startsWith("s3://"))
