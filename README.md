@@ -11,17 +11,17 @@ _Work in progress_
 
 ### Tests, compatibility checks
 
-| name | status | description |
-| ---- | ------ | ----------- |
-| hello-world-test | ✅ | testing scala |
-| aws-test | ❌ (tsl support required) | testing aws sdk support |
-| jline-test | ✅ | testing jline support (rich terminal with autocomplete) |
+| name | status (latest graalvm-ce) | status (latest graalvm-ee) | description |
+| ---- | ------------------- | ------------------- | ----------- |
+| hello-world-test | ✅ | ✅ | testing scala |
+| aws-test | ❌ (tsl support required) | ❌ (tsl support required) | testing aws sdk support |
+| jline-test | ✅ | ✅  | testing jline support (rich terminal with autocomplete) |
 
 ## Build
 
 1\. Add native-image to your PATH
 ```
-export "PATH=/path/to/graalvm-ee/Contents/Home/bin:$PATH
+export "PATH=/path/to/graalvm-ce-or-ee/Contents/Home/bin:$PATH
 ```
 
 2\. Build
