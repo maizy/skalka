@@ -7,11 +7,10 @@ package space.maizy.skalka.s3sh
 
 import org.jline.reader.{ EndOfFileException, LineReaderBuilder, UserInterruptException }
 import org.jline.reader.impl.DefaultParser
-import org.jline.reader.impl.completer.{ ArgumentCompleter, StringsCompleter }
 import org.jline.terminal.TerminalBuilder
 import space.maizy.skalka.core.CliApplication
-
 import scala.util.{ Failure, Success, Try }
+import space.maizy.skalka.s3sh.autocomplete.CommandCompleter
 
 object S3ShApp extends CliApplication {
 
@@ -23,11 +22,7 @@ object S3ShApp extends CliApplication {
       .system(true)
       .build()
 
-    val completer = new ArgumentCompleter(
-      new StringsCompleter("bar", "baz"),
-      new StringsCompleter("foo"),
-      new StringsCompleter("ree")
-    )
+    val completer = CommandCompleter()
 
     val reader = LineReaderBuilder.builder()
       .terminal(terminal)

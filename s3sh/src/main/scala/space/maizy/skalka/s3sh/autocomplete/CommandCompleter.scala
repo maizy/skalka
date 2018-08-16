@@ -5,9 +5,18 @@ package space.maizy.skalka.s3sh.autocomplete
  * See LICENSE.txt for details.
  */
 
-import scala.util.Try
-import org.jline.reader.impl.completer.ArgumentCompleter
+import java.util
+import scala.collection.JavaConverters._
+import org.jline.reader.{ Candidate, Completer, LineReader, ParsedLine }
+import space.maizy.skalka.s3sh.command.{ Command, Commands }
 
-object CommandCompleter extends ArgumentCompleter() {
 
+object CommandCompleter {
+  def apply(): CommandCompleter = new CommandCompleter(Commands.ALL)
+}
+
+class CommandCompleter(commands: List[Command]) extends Completer {
+  override def complete(reader: LineReader, line: ParsedLine, candidates: util.List[Candidate]): Unit = {
+    candidates.addAll(commands.map(c => new Candidate(c.prefix)).asJava)
+  }
 }

@@ -5,8 +5,6 @@ package space.maizy.skalka.s3sh
  * See LICENSE.txt for details.
  */
 
-import scala.util.Try
-
 object Version {
   override def toString: String = "0.0.1"  // TODO: set on compile
 }

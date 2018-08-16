@@ -5,8 +5,6 @@ package space.maizy.skalka.s3sh.command
  * See LICENSE.txt for details.
  */
 
-import scala.util.Try
-
 object Ls extends Command {
   override val prefix = "ls"
 
