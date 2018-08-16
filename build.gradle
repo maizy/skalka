@@ -20,6 +20,7 @@ ext {
   scalaMinorVersion = '6'
   scalaVersion = "${scalaMajorVersion}.${scalaMinorVersion}"
   catsVersion = '1.1.0'
+  jLineVersion = '3.8.0'
 }
 
 group = 'space.maizy'
@@ -145,9 +146,16 @@ project('hello-world-test') {
 
 project('jline-test') {
   applyCliToolOptions(it, 'space.maizy.skalka.JLineTestApp', [".*jline.*"])
-  def jLineVersion = '3.8.0'
   dependencies {
-    compile "org.jline:jline-terminal:$jLineVersion"
-    compile "org.jline:jline-reader:$jLineVersion"
+    compile "org.jline:jline-terminal:${jLineVersion}"
+    compile "org.jline:jline-reader:${jLineVersion}"
+  }
+}
+
+project('s3sh') {
+  applyCliToolOptions(it, 'space.maizy.skalka.s3sh.S3ShApp', [".*jline.*"])
+  dependencies {
+    compile "org.jline:jline-terminal:${jLineVersion}"
+    compile "org.jline:jline-reader:${jLineVersion}"
   }
 }
