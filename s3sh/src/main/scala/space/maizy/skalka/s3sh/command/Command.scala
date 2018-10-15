@@ -6,12 +6,6 @@ package space.maizy.skalka.s3sh.command
  */
 
 trait Command {
-  def prefix: String
+  def name: String
   def exec(args: List[String]): Unit
-}
-
-object Commands {
-  final val ALL: List[Command] = List(Ls, Version)
-  def prefixes: List[String] = ALL.map(_.prefix)
-  def findByPrefix(prefix: String): Option[Command] = ALL.find(_.prefix == prefix)
 }

@@ -6,7 +6,7 @@ package space.maizy.skalka.s3sh.command
  */
 
 object Ls extends Command {
-  override val prefix = "ls"
+  override val name = "ls"
 
   override def exec(args: List[String]): Unit = {
     println(s"ls $args")
