@@ -5,16 +5,17 @@ package space.maizy.skalka
  * See LICENSE.txt for details.
  */
 
+import scala.collection.JavaConverters._
 import com.amazonaws.services.s3.AmazonS3ClientBuilder
+import com.typesafe.scalalogging.StrictLogging
 import space.maizy.skalka.core.CliApplication
 
-import scala.collection.JavaConverters._
-
-object AwsTestApp extends CliApplication {
+object AwsTestApp extends CliApplication with StrictLogging {
 
   val name = "aws-test"
 
   def main(args: Array[String]): Unit = {
+    logger.info("init")
     if (args.length == 1) {
       testS3Listing(args(0))
     } else {

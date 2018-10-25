@@ -19,6 +19,8 @@ _Work in progress_
 
 ## Build
 
+Minimum supported GraalVM version: 1.0.0-rc8
+
 1\. Add native-image to your PATH
 ```
 export "PATH=/path/to/graalvm-ce-or-ee/Contents/Home/bin:$PATH
