@@ -147,6 +147,7 @@ def applyLogging = {Project p ->
     }
   }
 }
+
 project('aws-test') {
   applyCliToolOptions(it, 'space.maizy.skalka.AwsTestApp', ['.*amazonaws.*', 'logback.xml'], true)
   applyLogging(it)
@@ -168,5 +169,13 @@ project('jline-test') {
   dependencies {
     compile "org.jline:jline-terminal:$jLineVersion"
     compile "org.jline:jline-reader:$jLineVersion"
+  }
+}
+
+project('ahc-test') {
+  applyCliToolOptions(it, 'space.maizy.skalka.AhcTestApp', [], true)
+
+  dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.5.5'  //version used in aws-java-sdk-core:1.11.328
   }
 }
