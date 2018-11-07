@@ -11,13 +11,16 @@ _Work in progress_
 
 ### Tests, compatibility checks
 
-| name | status (latest graalvm-ce) | status (latest graalvm-ee) | description |
-| ---- | ------------------- | ------------------- | ----------- |
-| hello-world-test | ✅ | ✅ | testing scala |
-| aws-test | ❌ (tsl support required) | ❌ (tsl support required) | testing aws sdk support |
-| jline-test | ✅ | ✅  | testing jline support (rich terminal with autocomplete) |
+| name | status (latest graalvm-ce) | description |
+| ---- | ------------------- | ----------- |
+| hello-world-test | ✅ | testing scala |
+| aws-test | ❌ (apache http client support required) | testing aws sdk support |
+| ahc-test | ❌ (apache commons-logging initialization failed) | testing apache http client 4.5.x support (used in various libraries for ex. in aws-sdk) |
+| jline-test | ✅ | testing jline support (rich terminal with autocomplete) |
 
 ## Build
+
+Minimum supported GraalVM version: 1.0.0-rc8
 
 1\. Add native-image to your PATH
 ```
