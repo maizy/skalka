@@ -1,4 +1,4 @@
-package space.maizy.skalka
+package space.maizy.skalka.ahctest
 
 /**
  * Copyright (c) Nikita Kovaliov, maizy.ru, 2018

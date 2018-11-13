@@ -20,6 +20,7 @@ ext {
   scalaMinorVersion = '6'
   scalaVersion = "${scalaMajorVersion}.${scalaMinorVersion}"
   catsVersion = '1.1.0'
+  graalvmVersion = '1.0.0-rc9'
 }
 
 group = 'space.maizy'
@@ -45,6 +46,7 @@ allprojects {
     compile "org.scala-lang:scala-library:${scalaVersion}"
     compile "org.scala-lang:scala-reflect:${scalaVersion}"
     compile "org.typelevel:cats-core_${scalaMajorVersion}:${catsVersion}"
+    compileOnly "com.oracle.substratevm:svm:${graalvmVersion}"
   }
 
   scalaStyle {
@@ -173,7 +175,7 @@ project('jline-test') {
 }
 
 project('ahc-test') {
-  applyCliToolOptions(it, 'space.maizy.skalka.AhcTestApp', [], true)
+  applyCliToolOptions(it, 'space.maizy.skalka.ahctest.AhcTestApp', [], true)
 
   dependencies {
     compile 'org.apache.httpcomponents:httpclient:4.5.5'  //version used in aws-java-sdk-core:1.11.328
