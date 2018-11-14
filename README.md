@@ -15,12 +15,12 @@ _Work in progress_
 | ---- | ------------------- | ----------- |
 | hello-world-test | ✅ | testing scala |
 | aws-test | ❌ (apache http client support required) | testing aws sdk support |
-| ahc-test | ❌ (apache commons-logging initialization failed) | testing apache http client 4.5.x support (used in various libraries for ex. in aws-sdk) |
+| ahc-test | ❌ (SSL socket factory failed [graalvm issue #768](https://github.com/oracle/graal/issues/768)) | testing apache http client 4.5.x support (used in various libraries for ex. in aws-sdk) |
 | jline-test | ✅ | testing jline support (rich terminal with autocomplete) |
 
 ## Build
 
-Minimum supported GraalVM version: 1.0.0-rc8
+Minimum supported GraalVM version: 1.0.0-rc9
 
 1\. Add native-image to your PATH
 ```
