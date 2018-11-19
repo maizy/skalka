@@ -107,10 +107,6 @@ def applyCliToolOptions = {
     }
 
     task buildNative(type:Exec) {
-      doFirst {
-        mkdir "${buildDir}/native"
-      }
-
       def additionalOptions = nativeResource.collect { '-H:IncludeResources=' + it }
       if (enableHttps) {
         additionalOptions.add('--enable-http')
@@ -119,7 +115,16 @@ def applyCliToolOptions = {
         additionalOptions.add('--enable-all-security-services')
       }
       workingDir "${buildDir}/libs"
-      def nativeImageArgs = ['native-image', "-H:Path=${buildDir}/native"] + additionalOptions + ['-jar', p.name + '.jar']
+      def nativeImageArgs = [
+          'native-image',
+          "-H:Path=${buildDir}/native",
+          '--allow-incomplete-classpath'
+      ] + additionalOptions + ['-jar', p.name + '.jar']
+
+      doFirst {
+        mkdir "${buildDir}/native"
+        println("Build with:\n${nativeImageArgs.join(" ")}")
+      }
       executable '/usr/bin/env'
       args (nativeImageArgs)
     }
@@ -133,7 +138,19 @@ def applyCliToolOptions = {
             'To fix it, do something like:\n' +
             'export "PATH=/path/to/graalvm-ee/Contents/Home/bin:$PATH"')
         }
-        // TODO: version check
+        def output = proc.in.text
+        def versionMatch = output =~ /GraalVM Version ([a-z0-9.-]+)/
+        def version
+        if (versionMatch) {
+            version = versionMatch[0][1]
+        } else {
+            throw new RuntimeException("unable to parse native-image version: ${output}")
+        }
+        if (VersionNumber.parse(version) < VersionNumber.parse(graalvmVersion)) {
+          throw new RuntimeException("Incompatible native-image version: " +
+            "require ${graalvmVersion} or higher, ${version} given")
+        }
+        println("native-image version ${version}")
       }
     }
 
